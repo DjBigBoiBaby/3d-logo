@@ -16,24 +16,25 @@ light.position.set(5, 5, 5);
 scene.add(light);
 
 const loader = new GLTFLoader();
-loader.load('Logo.glb', function (gltf) {
-  const model = gltf.scene;
-  model.scale.set(1, 1, 1);
-  model.position.set(0, 0, 0);
-  scene.add(model);
+loader.load('./Logo.glb', function (gltf) {
+    const model = gltf.scene;
+    model.scale.set(1, 1, 1);
+    model.position.set(0, 0, 0);
+    scene.add(model);
 
-  function animate() {
-    requestAnimationFrame(animate);
-    model.rotation.y += 0.01;
-    renderer.render(scene, camera);
-  }
-  animate();
+    function animate() {
+        requestAnimationFrame(animate);
+        model.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+
+    animate();
 }, undefined, function (error) {
-  console.error('Error loading model:', error);
+    console.error('Error loading model:', error);
 });
 
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
 });
